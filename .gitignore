@@ -277,4 +277,7 @@ poetry.toml
 .history
 .ionide
 
+##
+venv.sh
+
 # End of https://www.toptal.com/developers/gitignore/api/django,python,visualstudiocode
