@@ -29,6 +29,6 @@ class RelayNovelDetail(APIView):
     def post(self, request, id):
         # reply novel
         prev = relay_novel.objects.get(id=id)
-        new_novel = prev.reply(request)
+        new_novel = prev.replyByRequest(request)
         serializer = relay_novelSerializer(new_novel)
         return Response(serializer.data, status=201)

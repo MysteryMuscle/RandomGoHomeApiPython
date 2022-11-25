@@ -31,13 +31,14 @@ class relay_novel(models.Model):
             new_novel.save()
             return new_novel
 
-    def reply(self, request):
+    def replyByRequest(self, request):
         """
             reply novel
         """
+        user = User.objects.get(id=request.data['author'])
         new_novel = self.reply(
             request.data['content'],
-            request.user.id,
+            user,
             request.data['image'],
             request.data['url']
         )
@@ -45,9 +46,3 @@ class relay_novel(models.Model):
 
     def __str__(self):
         return self.title
-
-    def serialize(self):
-        return relay_novelSerializer(self).data
-
-    def serialize_all(self):
-        return relay_novelSerializer(self, many=True).data
