@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from relay_novel import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('relay/novel/', views.relay_novel_list.as_view()),
 ]
