@@ -15,3 +15,26 @@ class relay_novel_list(APIView):
 
     def post(self):
         pass
+
+class RelayNovelReply(APIView):
+
+    def post(self, request):
+        
+        # validate data
+        # if data is valid, then reply
+        # else, return error
+
+        prev_id = request.data.get('prev')
+        content = request.data.get('content')
+        author = request.data.get('author')
+        image = request.data.get('image')
+        url = request.data.get('url')
+
+        prev = relay_novel.objects.get(id=prev_id)
+        new_novel = prev.reply(content, author, image, url)
+
+        serializer = relay_novelSerializer(new_novel)
+        return Response(serializer.data, status=201)
+        
+
+        
