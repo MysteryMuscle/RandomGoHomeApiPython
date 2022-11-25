@@ -19,5 +19,6 @@ from relay_novel import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('relay/novel/', views.relay_novel_list.as_view()),
+    path('relay/novel/', views.RelayNovels.as_view()),
+    path('relay/novel/<int:id>/', views.RelayNovelDetail.as_view()),
 ]
